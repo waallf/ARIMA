@@ -1,0 +1,29 @@
+#写的并不是很详细
+#参考：https://www.jianshu.com/p/f547bb4b50c3
+预测时间序列，在特征（数据的均值，方差，协方差）随时间发生变化时，而且变化是随机的并没有显著的规律性，就要用到ARIMA做时间序列预测。
+
+白噪声：就是一个随机数序列，这个随机数序列，均值为0，协方差为0，方差为一个常数
+
+ARIMA(p,d,q)模型：
+  arg p:AR自回归，p为相应的自回归项
+  arg d:差分的阶数
+  arg q:MA为移动平均，q为相应的移动平均项
+  
+AR(p):当前的值过去值的加权求和
+  Xt = A + theta1 * Xt-1 + ... + thetap * Xt-p + ut
+  其中ut是白噪声，A是常数（表示序列数据没有0均值化）
+ 
+MA（q）:过去的白噪声平均移动
+   Xt = B+ theta1 * ut-1 + ... + thetap * ut-q
+   ut是白噪声过程
+
+ARMA:
+  xt = fi1 * xt-1 +...+fip * xt-p + A + ut + theat1 * ut-1 + ... + thetaq * ut-q
+ARIMA:
+  与ARMA的区别就是加了一个差分算子，保证数据的稳定性
+   差分算子：
+   sxt = xt - xt-1
+   s^2 xt =sxt - sxt-1
+  
+  
+  
